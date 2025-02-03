@@ -1,0 +1,50 @@
+.main-container {
+    text-align: center;
+    padding: 20px 0;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    .main-text {
+        margin-bottom: 10px;
+    }
+    .form-container {
+        background: #4C7273;
+        border-radius: 10px;
+        padding: 5px;
+        width: fit-content;
+        margin: 0 auto;
+        form {
+            display: flex;
+            align-items: center;
+        }
+        
+        input {
+            // background: rgba(255, 255, 255, 0);
+            border: none;
+            background: #4C7273;
+            min-width: 300px;
+            // border-radius: 100px 0 0 100px;
+            font-size: 0.9rem;
+            // padding: 2px;
+            color: #D0D6D6;
+            &:focus {
+                outline: none;
+            }
+        }
+        button {
+            background:#D0D6D6;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
+            cursor: pointer;
+            i {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
