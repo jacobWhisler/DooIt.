@@ -7,12 +7,16 @@ import { useState } from "react";
 
 function App() {
   const [currentCompleted, setCurrentCompleted] = useState("current");
+  console.log(currentCompleted);
 
   return (
     <>
       <Header />
       <Main currentCompleted={currentCompleted} />
-      <BottomBar setCurrentCompleted={setCurrentCompleted} />
+      <BottomBar
+        currentCompleted={currentCompleted}
+        setCurrentCompleted={setCurrentCompleted}
+      />
     </>
   );
 }

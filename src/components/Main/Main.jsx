@@ -23,12 +23,12 @@ const Main = ({ currentCompleted }) => {
       </div>
       {currentCompleted === "current" && (
         <div className="todos-container">
-          <h4 class="todo-header">Todos:</h4>
+          <h4 className="todo-header">Todos:</h4>
         </div>
       )}
       {currentCompleted === "completed" && (
         <div className="completed-todos-container">
-          <h4 class="todo-header">Completed Todos:</h4>
+          <h4 className="todo-header">Completed Todos:</h4>
         </div>
       )}
     </div>

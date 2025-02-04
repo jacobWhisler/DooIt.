@@ -1,14 +1,19 @@
 import React from "react";
 import "./BottomBar.scss";
 
-const BottomBar = ({ setCurrentCompleted }) => {
+const BottomBar = ({ currentCompleted, setCurrentCompleted }) => {
+  console.log(currentCompleted);
   return (
     <div className="bottom-bar-container">
       <button
         onClick={() => {
           setCurrentCompleted("current");
         }}
-        className="bottom-bar-btn current"
+        className={
+          currentCompleted === "current"
+            ? "bottom-bar-btn current active"
+            : "bottom-bar-btn current"
+        }
       >
         Current
       </button>
@@ -16,7 +21,11 @@ const BottomBar = ({ setCurrentCompleted }) => {
         onClick={() => {
           setCurrentCompleted("completed");
         }}
-        className="bottom-bar-btn completed"
+        className={
+          currentCompleted === "completed"
+            ? "bottom-bar-btn completed active"
+            : "bottom-bar-btn completed"
+        }
       >
         Completed
       </button>

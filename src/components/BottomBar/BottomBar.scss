@@ -1,10 +1,27 @@
 .bottom-bar-container {
-    // border: 1px solid red;
+    border-top: 1px solid #4C7273;
 
     position: fixed;
     bottom: 0;
     width: 100%;
     .bottom-bar-btn {
         width: 50%;
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        padding: 5px 0;
+        color: #4C7273;
+        &.current {
+            border-right: 1px solid #4C7273;
+            cursor: pointer;
+        }
+        &.completed {
+            border-left: 1px solid #4C7273;
+            cursor: pointer;
+        }
+        &.active {
+            background: #4C7273;
+            color: #D0D6D6;
+        }
     }
 }
