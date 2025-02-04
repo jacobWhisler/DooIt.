@@ -1,12 +1,15 @@
 import React from "react";
 import "./CompletedToDo.scss";
 
-const CompletedToDo = ({ item }) => {
+const CompletedToDo = ({ item, deleteCompletedToDo }) => {
   return (
     <div className="completed-card-content">
       <p>{item.todo}</p>
       <div className="completed-card-btns">
-        <button className="btn delete">
+        <button
+          onClick={() => deleteCompletedToDo(item.id)}
+          className="btn delete"
+        >
           <i className="fas fa-trash"></i>
         </button>
       </div>
