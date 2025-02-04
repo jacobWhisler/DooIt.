@@ -6,7 +6,7 @@ import BottomBar from "./components/BottomBar/BottomBar";
 import { useState } from "react";
 
 function App() {
-  const [currentCompleted, setCurrentCompleted] = useState("current");
+  const [currentCompleted, setCurrentCompleted] = useState("completed");
   console.log(currentCompleted);
 
   return (
