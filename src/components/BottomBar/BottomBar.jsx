@@ -2,7 +2,7 @@ import React from "react";
 import "./BottomBar.scss";
 
 const BottomBar = ({ currentCompleted, setCurrentCompleted }) => {
-  console.log(currentCompleted);
+  // console.log(currentCompleted);
   return (
     <div className="bottom-bar-container">
       <button

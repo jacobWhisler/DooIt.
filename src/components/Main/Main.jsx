@@ -4,6 +4,7 @@ import CurrentToDo from "../CurrentToDo/CurrentToDo";
 import CompletedToDo from "../CompletedToDo/CompletedToDo";
 
 import "./Main.scss";
+import { nanoid } from "nanoid";
 
 const Main = ({ currentCompleted }) => {
   const [currentToDosList, setCurrentToDosList] = useState([
@@ -19,38 +20,50 @@ const Main = ({ currentCompleted }) => {
     { id: 3, todo: "Mow lawn", completed: true },
   ]);
 
-  const addTodo = () => {
-    console.log("add todo");
+  const addTodo = (formData) => {
+    const newToDo = formData.get("addtodo");
+    setCurrentToDosList((prevCurrentToDos) => [
+      {
+        id: nanoid(),
+        todo: newToDo,
+        completed: false,
+      },
+      ...prevCurrentToDos,
+    ]);
+    console.log(newToDo);
   };
   return (
     <div className="main-container">
-      <p className="main-text">Enter your to-do tasks below!</p>
-      <div className="form-container">
-        <form action={addTodo}>
-          <input
-            type="text"
-            placeholder="e.g. Take out the trash"
-            aria-label="Add Todo"
-            name="addtodo"
-          />
-          <button>
-            <i className="fas fa-plus"></i>
-          </button>
-        </form>
-      </div>
       {currentCompleted === "current" && (
-        <div className="current-todos-container">
-          <h3 className="todos-header">Todos:</h3>
-          {currentToDosList.map((item) => (
-            <CurrentToDo item={item} />
-          ))}
-        </div>
+        <>
+          <p className="main-text">Enter your to-do tasks below!</p>
+          <div className="form-container">
+            <form action={addTodo}>
+              <input
+                type="text"
+                placeholder="e.g. Take out the trash"
+                aria-label="Add Todo"
+                name="addtodo"
+              />
+              <button>
+                <i className="fas fa-plus"></i>
+              </button>
+            </form>
+          </div>
+          <div className="current-todos-container">
+            <h3 className="todos-header">Todos:</h3>
+            {currentToDosList.map((item) => (
+              <CurrentToDo key={item.id} item={item} />
+            ))}
+          </div>
+        </>
       )}
+
       {currentCompleted === "completed" && (
         <div className="completed-todos-container">
           <h3 className="todos-header">Completed Todos:</h3>
           {completedToDosList.map((item) => (
-            <CompletedToDo item={item} />
+            <CompletedToDo key={item.id} item={item} />
           ))}
         </div>
       )}
