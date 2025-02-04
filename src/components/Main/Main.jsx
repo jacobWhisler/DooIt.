@@ -1,7 +1,24 @@
 import React, { useState } from "react";
+
+import CurrentToDo from "../CurrentToDo/CurrentToDo";
+import CompletedToDo from "../CompletedToDo/CompletedToDo";
+
 import "./Main.scss";
 
 const Main = ({ currentCompleted }) => {
+  const [currentToDosList, setCurrentToDosList] = useState([
+    {
+      id: 1,
+      todo: "Wash dishes",
+      completed: false,
+    },
+    { id: 2, todo: "Feed the cat", completed: false },
+  ]);
+
+  const [completedToDosList, setCompletedToDosList] = useState([
+    { id: 3, todo: "Mow lawn", completed: true },
+  ]);
+
   const addTodo = () => {
     console.log("add todo");
   };
@@ -22,13 +39,19 @@ const Main = ({ currentCompleted }) => {
         </form>
       </div>
       {currentCompleted === "current" && (
-        <div className="todos-container">
-          <h4 className="todo-header">Todos:</h4>
+        <div className="current-todos-container">
+          <h3 className="todos-header">Todos:</h3>
+          {currentToDosList.map((item) => (
+            <CurrentToDo item={item} />
+          ))}
         </div>
       )}
       {currentCompleted === "completed" && (
         <div className="completed-todos-container">
-          <h4 className="todo-header">Completed Todos:</h4>
+          <h3 className="todos-header">Completed Todos:</h3>
+          {completedToDosList.map((item) => (
+            <CompletedToDo item={item} />
+          ))}
         </div>
       )}
     </div>
