@@ -7,18 +7,9 @@ import "./Main.scss";
 import { nanoid } from "nanoid";
 
 const Main = ({ currentCompleted }) => {
-  const [currentToDosList, setCurrentToDosList] = useState([
-    {
-      id: 1,
-      todo: "Wash dishes",
-      completed: false,
-    },
-    { id: 2, todo: "Feed the cat", completed: false },
-  ]);
+  const [currentToDosList, setCurrentToDosList] = useState([]);
 
-  const [completedToDosList, setCompletedToDosList] = useState([
-    { id: 3, todo: "Mow lawn", completed: true },
-  ]);
+  const [completedToDosList, setCompletedToDosList] = useState([]);
 
   const addToDo = (formData) => {
     const newToDo = formData.get("addtodo");
@@ -78,16 +69,18 @@ const Main = ({ currentCompleted }) => {
           </div>
           <div className="current-todos-container">
             <h3 className="todos-header">Todos:</h3>
-            {currentToDosList.length === 0
-              ? "No current tasks"
-              : currentToDosList.map((item) => (
-                  <CurrentToDo
-                    key={item.id}
-                    item={item}
-                    completeToDo={completeToDo}
-                    deleteCurrentToDo={deleteCurrentToDo}
-                  />
-                ))}
+            {currentToDosList.length === 0 ? (
+              <p className="add-item-notification">No current tasks</p>
+            ) : (
+              currentToDosList.map((item) => (
+                <CurrentToDo
+                  key={item.id}
+                  item={item}
+                  completeToDo={completeToDo}
+                  deleteCurrentToDo={deleteCurrentToDo}
+                />
+              ))
+            )}
           </div>
         </>
       )}
@@ -95,15 +88,17 @@ const Main = ({ currentCompleted }) => {
       {currentCompleted === "completed" && (
         <div className="completed-todos-container">
           <h3 className="todos-header">Completed Todos:</h3>
-          {completedToDosList.length === 0
-            ? "No completed tasks"
-            : completedToDosList.map((item) => (
-                <CompletedToDo
-                  key={item.id}
-                  item={item}
-                  deleteCompletedToDo={deleteCompletedToDo}
-                />
-              ))}
+          {completedToDosList.length === 0 ? (
+            <p className="add-item-notification">No current completed tasks</p>
+          ) : (
+            completedToDosList.map((item) => (
+              <CompletedToDo
+                key={item.id}
+                item={item}
+                deleteCompletedToDo={deleteCompletedToDo}
+              />
+            ))
+          )}
         </div>
       )}
     </div>
