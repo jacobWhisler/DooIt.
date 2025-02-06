@@ -32,6 +32,18 @@ const Main = ({ currentCompleted }) => {
     ]);
   };
 
+  const completeToDo = (id) => {
+    const newCurrentToDosList = currentToDosList.filter(
+      (item) => item.id !== id
+    );
+    const completedTask = currentToDosList.find((item) => item.id === id);
+    setCurrentToDosList(newCurrentToDosList);
+    setCompletedToDosList((prevCompletedToDos) => [
+      { ...completedTask, completed: true },
+      ...prevCompletedToDos,
+    ]);
+  };
+
   const deleteCurrentToDo = (id) => {
     const newCurrentToDosList = currentToDosList.filter(
       (item) => item.id !== id
@@ -72,6 +84,7 @@ const Main = ({ currentCompleted }) => {
                   <CurrentToDo
                     key={item.id}
                     item={item}
+                    completeToDo={completeToDo}
                     deleteCurrentToDo={deleteCurrentToDo}
                   />
                 ))}

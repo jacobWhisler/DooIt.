@@ -1,7 +1,7 @@
 import React from "react";
 import "./CurrentToDo.scss";
 
-const CurrentToDo = ({ item, deleteCurrentToDo }) => {
+const CurrentToDo = ({ item, deleteCurrentToDo, completeToDo }) => {
   return (
     <div className="current-card-content">
       <p>{item.todo}</p>
@@ -12,7 +12,7 @@ const CurrentToDo = ({ item, deleteCurrentToDo }) => {
         >
           <i className="fas fa-trash"></i>
         </button>
-        <button className="btn complete">
+        <button onClick={() => completeToDo(item.id)} className="btn complete">
           <i className="fas fa-check"></i>
         </button>
       </div>
